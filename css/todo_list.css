@@ -11,6 +11,10 @@ body {
 
 .input input {
   font-family: 'B612 Mono', monospace;
+  margin: 20px;
+  padding-left: 10px;
+  height: 35px;
+  width: 400px;
 }
 
 .clear_btn button {
