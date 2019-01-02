@@ -1,0 +1,12 @@
+body {
+  font-family: 'B612 Mono', monospace;
+  text-align: center;
+}
+
+.input input {
+  font-family: 'B612 Mono', monospace;
+}
+
+.clear_btn button {
+  font-family: 'B612 Mono', monospace;
+}
