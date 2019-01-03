@@ -1,3 +1,13 @@
+window.onload = function () {
+  let list = document.getElementById("list");
+  let content = JSON.parse(localStorage.getItem("todoList"));
+  for (let i = 0; i < content.length; i++) {
+    let element = document.createElement("li");
+    element.innerHTML = content[i];
+    list.appendChild(element);
+  }
+}
+
 function addATodo(event) {
   if (event.keyCode === 13) {
     createLocalStorage();
