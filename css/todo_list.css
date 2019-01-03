@@ -57,3 +57,20 @@ button {
   margin: 20px auto;
   width: 400px;
 }
+
+.radio {
+  width: 1.1rem;
+  height: 1.1rem;
+  background-color: rgb(255,255,255);
+  border: solid 1px rgb(221,221,221);
+  border-radius: 0.6rem;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  -webkit-appearance: none;
+}
+
+.radio:checked, .radio:hover {
+  background-color: rgb(70, 130, 180);
+  border: solid 2px rgb(80, 80, 80);
+}
