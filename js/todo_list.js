@@ -1,16 +1,17 @@
 window.onload = function () {
   let list = document.getElementById("list");
+  createLocalStorage();
   let content = JSON.parse(localStorage.getItem("todoList"));
   for (let i = 0; i < content.length; i++) {
     let element = document.createElement("li");
     element.innerHTML = content[i];
     list.appendChild(element);
   }
+  document.getElementById("count").innerHTML = 'Left items: ' + content.length;
 }
 
 function addATodo(event) {
   if (event.keyCode === 13) {
-    createLocalStorage();
     let input = document.getElementById("input").value;
     addContent(input);
     showList(input)
@@ -29,6 +30,7 @@ function addContent(input) {
     let list = JSON.parse(localStorage.getItem("todoList"));
     list.push(input);
     localStorage.setItem("todoList", JSON.stringify(list));
+    document.getElementById("count").innerHTML = 'Left items: ' + list.length;
   }
 }
 
