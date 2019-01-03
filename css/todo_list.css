@@ -37,15 +37,23 @@ body {
 
 .count {
   color: rgb(110, 110, 110);
-  margin: 20px;
+  height: 30px;
+  line-height: 30px;
 }
 
 button {
-  width: 170px;
-  height: 40px;
+  width: 150px;
+  height: 30px;
   background: rgb(70, 130, 180);
   border: none;
   border-radius: 5px;
   color: rgb(255, 255, 255);
-  font-size: 15px;
+  font-size: 13px;
+}
+
+.infor_and_btn {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+  width: 400px;
 }
