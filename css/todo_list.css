@@ -61,7 +61,6 @@ button {
 .radio {
   width: 1.1rem;
   height: 1.1rem;
-  background-color: rgb(255,255,255);
   border: solid 1px rgb(221,221,221);
   border-radius: 0.6rem;
   margin: 0;
@@ -93,4 +92,11 @@ li {
   height: 30px;
   vertical-align: middle;
   font-size: 20px;
+  border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.selected {
+  list-style-image: url('../images/circle_selected.svg');
+  color: rgb(110, 110, 110);
+  text-decoration: line-through;
 }
