@@ -8,6 +8,7 @@ window.onload = function () {
     list.appendChild(element);
   }
   document.getElementById("count").innerHTML = 'Left items: ' + content.length;
+  document.getElementById("input").focus();
 }
 
 function addATodo(event) {
