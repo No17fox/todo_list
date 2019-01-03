@@ -3,6 +3,7 @@ function addATodo(event) {
     createLocalStorage();
     let input = document.getElementById("input").value;
     addContent(input);
+    showList(input)
     clearInputBox();
   }
 }
@@ -25,4 +26,11 @@ function clearInputBox() {
   if (document.getElementById("input").value) {
     document.getElementById("input").value = "";
   }
+}
+
+function showList(input) {
+  let list = document.getElementById("list");
+  let element = document.createElement("li");
+  element.innerHTML = input;
+  list.appendChild(element);
 }
