@@ -92,7 +92,7 @@ li {
   border-bottom: 1px solid rgb(221, 221, 221);
 }
 
-.selected {
+.completed {
   list-style-image: url('../images/selected.svg');
   color: rgb(110, 110, 110);
   text-decoration: line-through;

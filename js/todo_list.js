@@ -3,9 +3,9 @@ window.onload = function () {
 
   let listNode = document.getElementById("list");
 
-  let currentList = JSON.parse(localStorage.getItem("todoList"));
+  let currentList = jsonToMap(localStorage.getItem("todoList"));
 
-  for (let item of currentList) {
+  for (let item of currentList.keys()) {
     showList(listNode, item);
   }
 
@@ -14,9 +14,17 @@ window.onload = function () {
   document.getElementById("input").focus();
 }
 
+function mapToJson(map) {
+  return JSON.stringify([...map]);
+}
+
+function jsonToMap(jsonStr) {
+  return new Map(JSON.parse(jsonStr));
+}
+
 function createLocalStorage() {
   if (!localStorage.todoList) {
-    localStorage.setItem("todoList", JSON.stringify([]));
+    localStorage.setItem("todoList", mapToJson(new Map()));
   }
 }
 
@@ -35,10 +43,10 @@ function addATodo(event) {
 }
 
 function addContent(input) {
-  let currentList = JSON.parse(localStorage.getItem("todoList"));
-  currentList.push(input);
-  localStorage.setItem("todoList", JSON.stringify(currentList));
-  return currentList.length;
+  let currentList = jsonToMap(localStorage.getItem("todoList"));
+  currentList.set(input, "active");
+  localStorage.setItem("todoList", mapToJson(currentList));
+  return currentList.size;
 }
 
 function clearInputBox() {
@@ -61,7 +69,7 @@ function showList(listNode, input) {
   todoItems.appendChild(deleteBtn);
 
   todoItems.addEventListener("click", () => {
-    todoItems.classList.add("selected");
+    todoItems.classList.add("completed");
   });
 
   deleteBtn.addEventListener("click", () => {
@@ -72,9 +80,8 @@ function showList(listNode, input) {
 }
 
 function deleteATodo(currentTodo) {
-  let currentList = JSON.parse(localStorage.getItem("todoList"));
-  let index = currentList.indexOf(currentTodo.innerHTML);
-  currentList.splice(index, 1);
-  localStorage.setItem("todoList", JSON.stringify(currentList));
-  return currentList.length;
+  let currentList = jsonToMap(localStorage.getItem("todoList"));
+  currentList.delete(currentTodo.innerHTML);
+  localStorage.setItem("todoList", mapToJson(currentList));
+  return currentList.size;
 }
