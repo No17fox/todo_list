@@ -1,27 +1,17 @@
 window.onload = function () {
-  let list = document.getElementById("list");
-
   createLocalStorage();
 
-  let content = JSON.parse(localStorage.getItem("todoList"));
-  for (let i = 0; i < content.length; i++) {
-    createList(list, content[i]);
+  let listNode = document.getElementById("list");
 
-    // del.addEventListener("click", () => {deleteTodo(ul, li, content)});
+  let currentList = JSON.parse(localStorage.getItem("todoList"));
+
+  for (let item of currentList) {
+    showList(listNode, item);
   }
 
-  document.getElementById("count").innerHTML = 'Left items: ' + content.length;
+  document.getElementById("count").innerHTML = `Left items: ${currentList.length}`;
 
   document.getElementById("input").focus();
-}
-
-function addATodo(event) {
-  if (event.keyCode === 13) {
-    let input = document.getElementById("input").value;
-    addContent(input);
-    showList(input);
-    clearInputBox();
-  }
 }
 
 function createLocalStorage() {
@@ -30,13 +20,25 @@ function createLocalStorage() {
   }
 }
 
-function addContent(input) {
-  if (input) {
-    let list = JSON.parse(localStorage.getItem("todoList"));
-    list.push(input);
-    localStorage.setItem("todoList", JSON.stringify(list));
-    document.getElementById("count").innerHTML = 'Left items: ' + list.length;
+function addATodo(event) {
+  if (event.keyCode === 13) {
+    let input = document.getElementById("input").value;
+    let listNode = document.getElementById("list");
+
+    if (input) {
+      let itemsNumber = addContent(input);
+      showList(listNode, input);
+      clearInputBox();
+      document.getElementById("count").innerHTML = `Left items: ${itemsNumber}`;
+    }
   }
+}
+
+function addContent(input) {
+  let currentList = JSON.parse(localStorage.getItem("todoList"));
+  currentList.push(input);
+  localStorage.setItem("todoList", JSON.stringify(currentList));
+  return currentList.length;
 }
 
 function clearInputBox() {
@@ -45,30 +47,34 @@ function clearInputBox() {
   }
 }
 
-function showList(input) {
-  let list = document.getElementById("list");
-  createList(list, input);
-}
-
-function createList(list, input) {
-  let todo = document.createElement("li");
+function showList(listNode, input) {
+  let todoItems = document.createElement("li");
+  let todoContent = document.createElement("span");
   let deleteBtn = document.createElement("div");
 
-  todo.innerHTML = input;
+  todoContent.innerHTML = input;
   deleteBtn.innerHTML = "DELETE";
   deleteBtn.classList.add("delete_btn");
 
-  list.appendChild(todo);
-  todo.appendChild(deleteBtn);
+  listNode.appendChild(todoItems);
+  todoItems.appendChild(todoContent);
+  todoItems.appendChild(deleteBtn);
 
-  todo.addEventListener("click", () => {
-    todo.classList.add("selected");
+  todoItems.addEventListener("click", () => {
+    todoItems.classList.add("selected");
+  });
+
+  deleteBtn.addEventListener("click", () => {
+    let itemsNumber = deleteATodo(todoContent);
+    document.getElementById("count").innerHTML = `Left items: ${itemsNumber}`;
+    listNode.removeChild(todoItems);
   });
 }
 
-// function deleteTodo(ul, li, todoList) {
-//   // let list = JSON.parse(todoList);
-//   let index = todoList.find(li.childNodes.innerHTML);
-//   todoList.splice(index);
-//   ul.removeChild(li);
-// }
+function deleteATodo(currentTodo) {
+  let currentList = JSON.parse(localStorage.getItem("todoList"));
+  let index = currentList.indexOf(currentTodo.innerHTML);
+  currentList.splice(index, 1);
+  localStorage.setItem("todoList", JSON.stringify(currentList));
+  return currentList.length;
+}
