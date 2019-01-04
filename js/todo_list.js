@@ -1,28 +1,26 @@
 window.onload = function () {
   let ul = document.getElementById("list");
+
   createLocalStorage();
+
   let content = JSON.parse(localStorage.getItem("todoList"));
   for (let i = 0; i < content.length; i++) {
     let li = document.createElement("li");
+    let del = document.createElement("div");
     li.innerHTML = content[i];
+    del.innerHTML = "DELETE";
+    del.classList.add("delete_btn");
     ul.appendChild(li);
+    li.appendChild(del);
+
+    li.addEventListener("click", () => {
+      li.classList.add("selected");
+    });
   }
 
   document.getElementById("count").innerHTML = 'Left items: ' + content.length;
 
   document.getElementById("input").focus();
-
-  let allList = document.querySelectorAll("li");
-  for (let list of allList) {
-    let del = document.createElement("div");
-    del.innerHTML = "DELETE";
-    del.classList.add("delete_btn");
-    list.appendChild(del);
-
-    list.addEventListener("click", () => {
-      list.classList.add("selected");
-    });
-  }
 }
 
 function addATodo(event) {
@@ -62,6 +60,7 @@ function showList(input) {
 
   li.innerHTML = input;
   del.innerHTML = "DELETE";
+  del.classList.add("delete_btn");
 
   ul.appendChild(li);
   li.appendChild(del);
@@ -69,6 +68,4 @@ function showList(input) {
   li.addEventListener("click", () => {
     li.classList.add("selected");
   });
-
-  del.classList.add("delete_btn");
 }
