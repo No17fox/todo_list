@@ -33,15 +33,6 @@ body {
 
 .clear_btn button {
   font-family: 'B612 Mono', monospace;
-}
-
-.count {
-  color: rgb(110, 110, 110);
-  height: 30px;
-  line-height: 30px;
-}
-
-button {
   width: 150px;
   height: 30px;
   background: rgb(70, 130, 180);
@@ -49,6 +40,12 @@ button {
   border-radius: 5px;
   color: rgb(255, 255, 255);
   font-size: 13px;
+}
+
+.count {
+  color: rgb(110, 110, 110);
+  height: 30px;
+  line-height: 30px;
 }
 
 .infor_and_btn {
@@ -96,7 +93,7 @@ li {
 }
 
 .selected {
-  list-style-image: url('../images/circle_selected.svg');
+  list-style-image: url('../images/selected.svg');
   color: rgb(110, 110, 110);
   text-decoration: line-through;
 }
