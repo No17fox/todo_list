@@ -1,21 +1,13 @@
 window.onload = function () {
-  let ul = document.getElementById("list");
+  let list = document.getElementById("list");
 
   createLocalStorage();
 
   let content = JSON.parse(localStorage.getItem("todoList"));
   for (let i = 0; i < content.length; i++) {
-    let li = document.createElement("li");
-    let del = document.createElement("div");
-    li.innerHTML = content[i];
-    del.innerHTML = "DELETE";
-    del.classList.add("delete_btn");
-    ul.appendChild(li);
-    li.appendChild(del);
+    createList(list, content[i]);
 
-    li.addEventListener("click", () => {
-      li.classList.add("selected");
-    });
+    // del.addEventListener("click", () => {deleteTodo(ul, li, content)});
   }
 
   document.getElementById("count").innerHTML = 'Left items: ' + content.length;
@@ -27,7 +19,7 @@ function addATodo(event) {
   if (event.keyCode === 13) {
     let input = document.getElementById("input").value;
     addContent(input);
-    showList(input)
+    showList(input);
     clearInputBox();
   }
 }
@@ -54,18 +46,29 @@ function clearInputBox() {
 }
 
 function showList(input) {
-  let ul = document.getElementById("list");
-  let li = document.createElement("li");
-  let del = document.createElement("div");
+  let list = document.getElementById("list");
+  createList(list, input);
+}
 
-  li.innerHTML = input;
-  del.innerHTML = "DELETE";
-  del.classList.add("delete_btn");
+function createList(list, input) {
+  let todo = document.createElement("li");
+  let deleteBtn = document.createElement("div");
 
-  ul.appendChild(li);
-  li.appendChild(del);
+  todo.innerHTML = input;
+  deleteBtn.innerHTML = "DELETE";
+  deleteBtn.classList.add("delete_btn");
 
-  li.addEventListener("click", () => {
-    li.classList.add("selected");
+  list.appendChild(todo);
+  todo.appendChild(deleteBtn);
+
+  todo.addEventListener("click", () => {
+    todo.classList.add("selected");
   });
 }
+
+// function deleteTodo(ul, li, todoList) {
+//   // let list = JSON.parse(todoList);
+//   let index = todoList.find(li.childNodes.innerHTML);
+//   todoList.splice(index);
+//   ul.removeChild(li);
+// }
