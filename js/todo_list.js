@@ -7,11 +7,18 @@ window.onload = function () {
     li.innerHTML = content[i];
     ul.appendChild(li);
   }
+
   document.getElementById("count").innerHTML = 'Left items: ' + content.length;
+
   document.getElementById("input").focus();
 
   let allList = document.querySelectorAll("li");
   for (let list of allList) {
+    let del = document.createElement("div");
+    del.innerHTML = "DELETE";
+    del.classList.add("delete_btn");
+    list.appendChild(del);
+
     list.addEventListener("click", () => {
       list.classList.add("selected");
     });
@@ -51,9 +58,17 @@ function clearInputBox() {
 function showList(input) {
   let ul = document.getElementById("list");
   let li = document.createElement("li");
+  let del = document.createElement("div");
+
   li.innerHTML = input;
+  del.innerHTML = "DELETE";
+
   ul.appendChild(li);
+  li.appendChild(del);
+
   li.addEventListener("click", () => {
     li.classList.add("selected");
   });
+
+  del.classList.add("delete_btn");
 }
