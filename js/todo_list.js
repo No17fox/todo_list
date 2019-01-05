@@ -1,3 +1,5 @@
+let status = "all";
+
 window.onload = function () {
   createLocalStorage();
   showAllTodo();
@@ -39,7 +41,9 @@ function addATodo(event) {
     if (input) {
       let currentList = jsonToMap(localStorage.getItem("todoList"));
       addContent(currentList, input);
-      showList(currentList, listNode, input);
+      if (status != "completed") {
+        showList(currentList, listNode, input);
+      }
       clearInputBox();
       let leftItems = countLeftItems(currentList);
       document.getElementById("count").innerHTML = `Left items: ${leftItems}`;
@@ -114,6 +118,7 @@ function showAllTodo() {
   for (let item of currentList.keys()) {
     showList(currentList, listNode, item);
   }
+  status = "all";
 }
 
 function showActiveTodo() {
@@ -126,6 +131,7 @@ function showActiveTodo() {
   for (let item of activeTodo.keys()) {
     showList(activeTodo, listNode, item);
   }
+  status = "active";
 }
 
 function showCompletedTodo() {
@@ -138,4 +144,5 @@ function showCompletedTodo() {
   for (let item of completedTodo.keys()) {
     showList(completedTodo, listNode, item);
   }
+  status = "completed";
 }
