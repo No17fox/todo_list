@@ -22,15 +22,15 @@
     <div class="footer">
       <div class="view_mode">
         <div>
-          <input class="radio" type="radio" name="view_mode" value="all" checked="checked" id="all" />
+          <input class="radio"  id="all" type="radio" name="view_mode" value="all" checked="checked" onclick="showAllTodo()" />
           <label for="all">ALL</label>
         </div>
         <div>
-          <input class="radio" type="radio" name="view_mode" value="active" id="active" />
+          <input class="radio" id="active" type="radio" name="view_mode" value="active" onclick="showActiveTodo()"/>
           <label for="active">ACTIVE</label>
         </div>
         <div>
-          <input class="radio" type="radio" name="view_mode" value="completed" id="completed" />
+          <input class="radio" id="completed" type="radio" name="view_mode" value="completed" onclick="showCompletedTodo()" />
           <label for="completed">COMPLETED</label>
         </div>
       </div>

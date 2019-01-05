@@ -1,11 +1,7 @@
 window.onload = function () {
   createLocalStorage();
-  let listNode = document.getElementById("list");
+  showAllTodo();
   let currentList = jsonToMap(localStorage.getItem("todoList"));
-  for (let item of currentList.keys()) {
-    showList(currentList, listNode, item);
-  }
-
   let leftItems = countLeftItems(currentList);
   document.getElementById("count").innerHTML = `Left items: ${leftItems}`;
   document.getElementById("input").focus();
@@ -111,6 +107,35 @@ function deleteATodo(currentTodo) {
   return leftItems;
 }
 
-function showAllTodo(argument) {
-  // body...
+function showAllTodo() {
+  let listNode = document.getElementById("list");
+  listNode.innerHTML = "";
+  let currentList = jsonToMap(localStorage.getItem("todoList"));
+  for (let item of currentList.keys()) {
+    showList(currentList, listNode, item);
+  }
+}
+
+function showActiveTodo() {
+  let listNode = document.getElementById("list");
+  listNode.innerHTML = "";
+  let currentList = jsonToMap(localStorage.getItem("todoList"));
+  let activeTodo = new Map(
+    [...currentList].filter(([key, value]) => value === "active")
+  );
+  for (let item of activeTodo.keys()) {
+    showList(activeTodo, listNode, item);
+  }
+}
+
+function showCompletedTodo() {
+  let listNode = document.getElementById("list");
+  listNode.innerHTML = "";
+  let currentList = jsonToMap(localStorage.getItem("todoList"));
+  let completedTodo = new Map(
+    [...currentList].filter(([key, value]) => value === "completed")
+  );
+  for (let item of completedTodo.keys()) {
+    showList(completedTodo, listNode, item);
+  }
 }
