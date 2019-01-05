@@ -52,7 +52,7 @@ function clearInputBox() {
 }
 
 function showList(listNode, input) {
-  // let currentList = jsonToMap(localStorage.getItem("todoList"));
+  let currentList = jsonToMap(localStorage.getItem("todoList"));
 
   let todoItems = document.createElement("li");
   let todoContent = document.createElement("div");
@@ -60,9 +60,10 @@ function showList(listNode, input) {
 
   todoContent.innerHTML = input;
   todoContent.classList.add("todo_content");
-  // if (currentList.get(input) === "completed") {
-  //   todoItems.classList.add("completed");
-  // }
+  if (currentList.get(input) === "completed") {
+    todoItems.classList.add("completed");
+    todoContent.classList.add("completed");
+  }
 
   deleteBtn.innerHTML = "DELETE";
   deleteBtn.classList.add("delete_btn");
