@@ -21,11 +21,11 @@ body {
   font-family: 'B612 Mono', monospace;
   padding-left: 10px;
   height: 35px;
-  width: 400px;
+  width: 319px;
 }
 
 .view_mode {
-  width: 400px;
+  width: 319px;
   display: flex;
   justify-content: space-between;
   margin: 20px auto;
@@ -52,7 +52,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 20px auto;
-  width: 400px;
+  width: 319px;
 }
 
 .radio {
@@ -72,7 +72,7 @@ body {
 }
 
 .list {
-  width: 400px;
+  width: 319px;
   margin: 20px auto;
   text-align: left;
   list-style-image: url('../images/circle_unselected.svg');
@@ -92,7 +92,7 @@ li {
 }
 
 .todo_content {
-  width: 300px;
+  width: 220px;
   display: inline-block;
 }
 
