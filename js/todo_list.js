@@ -146,3 +146,16 @@ function showCompletedTodo() {
   }
   status = "completed";
 }
+
+function clearCompletedTodo() {
+  let listNode = document.getElementById("list");
+  listNode.innerHTML = "";
+  let currentList = jsonToMap(localStorage.getItem("todoList"));
+  let activeTodo = new Map(
+    [...currentList].filter(([key, value]) => value === "active")
+  );
+  localStorage.setItem("todoList", mapToJson(activeTodo));
+  for (let item of activeTodo.keys()) {
+    showList(activeTodo, listNode, item);
+  }
+}
