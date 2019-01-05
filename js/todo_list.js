@@ -3,10 +3,11 @@ window.onload = function () {
   let listNode = document.getElementById("list");
   let currentList = jsonToMap(localStorage.getItem("todoList"));
   for (let item of currentList.keys()) {
-    showList(listNode, item);
+    showList(currentList, listNode, item);
   }
 
-  document.getElementById("count").innerHTML = `Left items: ${currentList.length}`;
+  let leftItems = countLeftItems(currentList);
+  document.getElementById("count").innerHTML = `Left items: ${leftItems}`;
   document.getElementById("input").focus();
 }
 
@@ -24,25 +25,35 @@ function createLocalStorage() {
   }
 }
 
+function countLeftItems(currentList) {
+  let leftItems = 0;
+  for (let status of currentList.values()) {
+    if (status === "active") {
+      leftItems++;
+    }
+  }
+  return leftItems;
+}
+
 function addATodo(event) {
   if (event.keyCode === 13) {
     let input = document.getElementById("input").value;
     let listNode = document.getElementById("list");
 
     if (input) {
-      let itemsNumber = addContent(input);
-      showList(listNode, input);
+      let currentList = jsonToMap(localStorage.getItem("todoList"));
+      addContent(currentList, input);
+      showList(currentList, listNode, input);
       clearInputBox();
-      document.getElementById("count").innerHTML = `Left items: ${itemsNumber}`;
+      let leftItems = countLeftItems(currentList);
+      document.getElementById("count").innerHTML = `Left items: ${leftItems}`;
     }
   }
 }
 
-function addContent(input) {
-  let currentList = jsonToMap(localStorage.getItem("todoList"));
+function addContent(currentList, input) {
   currentList.set(input, "active");
   localStorage.setItem("todoList", mapToJson(currentList));
-  return currentList.size;
 }
 
 function clearInputBox() {
@@ -51,9 +62,7 @@ function clearInputBox() {
   }
 }
 
-function showList(listNode, input) {
-  let currentList = jsonToMap(localStorage.getItem("todoList"));
-
+function showList(currentList, listNode, input) {
   let todoItems = document.createElement("li");
   let todoContent = document.createElement("div");
   let deleteBtn = document.createElement("div");
@@ -75,12 +84,13 @@ function showList(listNode, input) {
   todoContent.addEventListener("click", () => {
     todoItems.classList.add("completed");
     todoContent.classList.add("completed");
-    completeATodo(todoContent);
+    let leftItems = completeATodo(todoContent);
+    document.getElementById("count").innerHTML = `Left items: ${leftItems}`;
   });
 
   deleteBtn.addEventListener("click", () => {
-    let itemsNumber = deleteATodo(todoContent);
-    document.getElementById("count").innerHTML = `Left items: ${itemsNumber}`;
+    let leftItems = deleteATodo(todoContent);
+    document.getElementById("count").innerHTML = `Left items: ${leftItems}`;
     listNode.removeChild(todoItems);
   });
 }
@@ -89,11 +99,18 @@ function completeATodo(currentTodo) {
   let currentList = jsonToMap(localStorage.getItem("todoList"));
   currentList.set(currentTodo.innerHTML, "completed");
   localStorage.setItem("todoList", mapToJson(currentList));
+  let leftItems = countLeftItems(currentList);
+  return leftItems;
 }
 
 function deleteATodo(currentTodo) {
   let currentList = jsonToMap(localStorage.getItem("todoList"));
   currentList.delete(currentTodo.innerHTML);
   localStorage.setItem("todoList", mapToJson(currentList));
-  return currentList.size;
+  let leftItems = countLeftItems(currentList);
+  return leftItems;
+}
+
+function showAllTodo(argument) {
+  // body...
 }
