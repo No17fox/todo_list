@@ -56,19 +56,19 @@ body {
 }
 
 .radio {
-  width: 1.1rem;
-  height: 1.1rem;
-  border: solid 1px rgb(221,221,221);
+  width: 1rem;
+  height: 1rem;
+  border: solid 1px rgb(180, 180, 180);
   border-radius: 0.6rem;
   margin: 0;
   padding: 0;
-  vertical-align: top;
+  vertical-align: center;
   -webkit-appearance: none;
 }
 
 .radio:checked, .radio:hover {
   background-color: rgb(70, 130, 180);
-  border: solid 2px rgb(80, 80, 80);
+  border: solid 1px rgb(80, 80, 80);
 }
 
 .list {
