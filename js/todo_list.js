@@ -1,16 +1,12 @@
 window.onload = function () {
   createLocalStorage();
-
   let listNode = document.getElementById("list");
-
   let currentList = jsonToMap(localStorage.getItem("todoList"));
-
   for (let item of currentList.keys()) {
     showList(listNode, item);
   }
 
   document.getElementById("count").innerHTML = `Left items: ${currentList.length}`;
-
   document.getElementById("input").focus();
 }
 
@@ -56,11 +52,18 @@ function clearInputBox() {
 }
 
 function showList(listNode, input) {
+  // let currentList = jsonToMap(localStorage.getItem("todoList"));
+
   let todoItems = document.createElement("li");
-  let todoContent = document.createElement("span");
+  let todoContent = document.createElement("div");
   let deleteBtn = document.createElement("div");
 
   todoContent.innerHTML = input;
+  todoContent.classList.add("todo_content");
+  // if (currentList.get(input) === "completed") {
+  //   todoItems.classList.add("completed");
+  // }
+
   deleteBtn.innerHTML = "DELETE";
   deleteBtn.classList.add("delete_btn");
 
@@ -68,8 +71,10 @@ function showList(listNode, input) {
   todoItems.appendChild(todoContent);
   todoItems.appendChild(deleteBtn);
 
-  todoItems.addEventListener("click", () => {
+  todoContent.addEventListener("click", () => {
     todoItems.classList.add("completed");
+    todoContent.classList.add("completed");
+    completeATodo(todoContent);
   });
 
   deleteBtn.addEventListener("click", () => {
@@ -77,6 +82,12 @@ function showList(listNode, input) {
     document.getElementById("count").innerHTML = `Left items: ${itemsNumber}`;
     listNode.removeChild(todoItems);
   });
+}
+
+function completeATodo(currentTodo) {
+  let currentList = jsonToMap(localStorage.getItem("todoList"));
+  currentList.set(currentTodo.innerHTML, "completed");
+  localStorage.setItem("todoList", mapToJson(currentList));
 }
 
 function deleteATodo(currentTodo) {
