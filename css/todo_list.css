@@ -42,6 +42,14 @@ body {
   font-size: 13px;
 }
 
+.clear_btn {
+  opacity: 0;
+}
+
+.appear {
+  opacity: 1;
+}
+
 .count {
   color: rgb(110, 110, 110);
   height: 30px;

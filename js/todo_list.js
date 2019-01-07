@@ -6,6 +6,7 @@ window.onload = function () {
   let currentList = jsonToMap(localStorage.getItem("todoList"));
   let leftItems = countLeftItems(currentList);
   document.getElementById("count").innerHTML = `Left items: ${leftItems}`;
+  showOrHideClearCompletedBtn(currentList);
 }
 
 function mapToJson(map) {
@@ -30,6 +31,14 @@ function countLeftItems(currentList) {
   return activeTodo.size;
 }
 
+function showOrHideClearCompletedBtn(currentList) {
+  if (currentList.size > 1) {
+    document.getElementById("clear_btn").classList.add("appear");
+  } else {
+    document.getElementById("clear_btn").classList.remove("appear");
+  }
+}
+
 function addATodo(event) {
   if (event.keyCode === 13) {
     let input = document.getElementById("input").value;
@@ -43,6 +52,7 @@ function addATodo(event) {
       clearInputBox();
       let leftItems = countLeftItems(currentList);
       document.getElementById("count").innerHTML = `Left items: ${leftItems}`;
+      showOrHideClearCompletedBtn(currentList);
     }
   }
 }
@@ -106,6 +116,7 @@ function deleteATodo(currentTodo) {
   let currentList = jsonToMap(localStorage.getItem("todoList"));
   currentList.delete(currentTodo.innerHTML);
   localStorage.setItem("todoList", mapToJson(currentList));
+  showOrHideClearCompletedBtn(currentList);
   let leftItems = countLeftItems(currentList);
   return leftItems;
 }
