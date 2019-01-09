@@ -3,8 +3,6 @@ let TodoItems = require("./todo_items.js");
 class List {
   constructor(allTodo = new Map()) {
     this.allTodo = allTodo;
-    this.activeTodo = this.getActiveTodo();
-    this.completedTodo = this.getCompletedTodo();
   }
 
   addATodo(content, isCompleted = false, isDeleted = false) {

@@ -23,7 +23,7 @@ describe("List", () => {
     let result = new Map();
     result.set(newTodo.content, newTodo);
     
-    expect(list.activeTodo).toEqual(result);
+    expect(list.getActiveTodo()).toEqual(result);
   });
 
   it("should have a method to find completed todo", () => {
@@ -31,7 +31,14 @@ describe("List", () => {
     let result = new Map();
     result.set(newTodo.content, newTodo);
     
-    expect(list.completedTodo).toEqual(result);
+    expect(list.getCompletedTodo()).toEqual(result);
   });
+
+  // it("should have an attribute to count active todo", () => {
+  //   console.log(list.allTodo);
+  //   list.activeTodo;
+  //   console.log(list.activeTodo);
+  //   expect(list.leftItems).toEqual(1);
+  // })
 });
 
