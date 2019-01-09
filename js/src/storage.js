@@ -1,6 +1,6 @@
 'use strict';
 
-let List = require("../src/list.js");
+// let List = require("../src/list.js");
 
 function mapToJson(map) {
   return JSON.stringify([...map]);
@@ -28,21 +28,21 @@ function updateLocalStorage(operation, key = "") {
     case "add":
       list.addATodo(key);
       localStorage.setItem("todoList", mapToJson(list.allTodo));
-      break;
+      return list;
 
     case "complete":
       list.completedATodo(key);
       localStorage.setItem("todoList", mapToJson(list.allTodo));
-      break;
+      return list;
 
     case "delete":
       list.deleteATodo(key);
       localStorage.setItem("todoList", mapToJson(list.allTodo));
-      break;
+      return list;
 
     default:
       break;
   }
 }
 
-module.exports = updateLocalStorage;
+// module.exports = updateLocalStorage;
