@@ -31,6 +31,10 @@ class List {
     currentTodo.isCompleted = true;
     this.allTodo.set(key, currentTodo);
   }
+
+  deleteATodo(key) {
+    this.allTodo.delete(key);
+  }
   
 }
 

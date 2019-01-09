@@ -46,6 +46,16 @@ describe("List", () => {
     result.set(newTodo.content, newTodo);
 
     expect(list.getActiveTodo()).toEqual(result);
+  });
+
+  it("should have a method to delete a todo", () => {
+    list.deleteATodo("站会");
+
+    let newTodo = new TodoItems("Code review", true);
+    let result = new Map();
+    result.set(newTodo.content, newTodo);
+
+    expect(list.allTodo).toEqual(result);
   })
 });
 
