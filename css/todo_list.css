@@ -17,11 +17,12 @@ body {
   margin: 20px;
 }
 
-.input input {
+input {
   font-family: 'B612 Mono', monospace;
   padding-left: 10px;
   height: 35px;
   width: 319px;
+  outline: none;
 }
 
 .view_mode {
