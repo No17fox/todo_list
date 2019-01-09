@@ -56,6 +56,6 @@ describe("List", () => {
     result.set(newTodo.content, newTodo);
 
     expect(list.allTodo).toEqual(result);
-  })
+  });
 });
 
