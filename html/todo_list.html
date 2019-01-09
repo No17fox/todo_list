@@ -20,6 +20,12 @@
       </div>
     </div>
     <div class="footer">
+      <div class="infor_and_btn">
+        <div class="count" id="count">Left items: 0</div>
+        <div class="clear_btn" id="clear_btn">
+          <button type="button" name="clear_btn" onclick="clearCompletedTodo()">Clear Completed</button>
+        </div>
+      </div>
       <div class="view_mode">
         <div>
           <input class="radio"  id="all" type="radio" name="view_mode" value="all" checked="checked" onclick="showAllTodo()" />
@@ -32,12 +38,6 @@
         <div>
           <input class="radio" id="completed" type="radio" name="view_mode" value="completed" onclick="showCompletedTodo()" />
           <label for="completed">COMPLETED</label>
-        </div>
-      </div>
-      <div class="infor_and_btn">
-        <div class="count" id="count">Left items: 0</div>
-        <div class="clear_btn" id="clear_btn">
-          <button type="button" name="clear_btn" onclick="clearCompletedTodo()">Clear Completed</button>
         </div>
       </div>
     </div>
