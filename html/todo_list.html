@@ -3,14 +3,18 @@
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>TODO LIST</title>
+    <title>
+      TODO LIST
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" type="text/css" media="screen" href="../css/todo_list.css"/>
-    <link href="https://fonts.googleapis.com/css?family=B612+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=B612+Mono" rel="stylesheet"/>
     <script src="../js/todo_list.js"></script>
   </head>
   <body>
-    <div class="head">TODO LIST</div>
+    <div class="head">
+      TODO LIST
+    </div>
     <div class="content">
       <div class="input">
         <input id="input" type="text" name="input" placeholder="Write a TODO, press ENTER to add" autofocus="autofocus" onkeydown="addATodo(event)"/>
@@ -21,23 +25,33 @@
     </div>
     <div class="footer">
       <div class="infor_and_btn">
-        <div class="count" id="count">Left items: 0</div>
+        <div class="count" id="count">
+          Left items: 0
+        </div>
         <div class="clear_btn" id="clear_btn">
-          <button type="button" name="clear_btn" onclick="clearCompletedTodo()">Clear Completed</button>
+          <button type="button" name="clear_btn" onclick="clearCompletedTodo()">
+            Clear Completed
+          </button>
         </div>
       </div>
       <div class="view_mode">
         <div>
-          <input class="radio"  id="all" type="radio" name="view_mode" value="all" checked="checked" onclick="showAllTodo()" />
-          <label for="all">ALL</label>
+          <input class="radio"  id="all" type="radio" name="view_mode" value="all" checked="checked" onclick="showAllTodo()"/>
+          <label for="all">
+            ALL
+          </label>
         </div>
         <div>
           <input class="radio" id="active" type="radio" name="view_mode" value="active" onclick="showActiveTodo()"/>
-          <label for="active">ACTIVE</label>
+          <label for="active">
+            ACTIVE
+          </label>
         </div>
         <div>
-          <input class="radio" id="completed" type="radio" name="view_mode" value="completed" onclick="showCompletedTodo()" />
-          <label for="completed">COMPLETED</label>
+          <input class="radio" id="completed" type="radio" name="view_mode" value="completed" onclick="showCompletedTodo()"/>
+          <label for="completed">
+            COMPLETED
+          </label>
         </div>
       </div>
     </div>
