@@ -1,0 +1,24 @@
+{
+  "name": "todo_list",
+  "version": "1.0.0",
+  "description": "An application of todo list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-single": "jasmine-node --verbose "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/No17fox/todo_list.git"
+  },
+  "author": "wanglei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/No17fox/todo_list/issues"
+  },
+  "homepage": "https://github.com/No17fox/todo_list#readme",
+  "dependencies": {
+    "jasmine": "^3.3.1",
+    "jasmine-node": "^1.16.2"
+  }
+}
