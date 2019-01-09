@@ -24,4 +24,16 @@ describe("TodoItems", () => {
     expect(todoItems.isDeleted).toEqual(true);
   });
 
+  it("should have a function to change todo status when complete a todo", () => {
+    let todoItems = new TodoItems("站会");
+    todoItems.completeATodo();
+    expect(todoItems.isCompleted).toEqual(true);
+  });
+
+  it("should have a function to change todo status when delete a todo", () => {
+    let todoItems = new TodoItems("站会");
+    todoItems.deletedATodo();
+    expect(todoItems.isDeleted).toEqual(true);
+  });
+
 });

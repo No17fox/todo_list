@@ -4,6 +4,14 @@ class TodoItems {
     this.isCompleted = isCompleted;
     this.isDeleted = isDeleted;
   }
+
+  completeATodo() {
+    this.isCompleted = true;
+  }
+
+  deletedATodo() {
+    this.isDeleted = true;
+  }
 }
 
 module.exports = TodoItems;
