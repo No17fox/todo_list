@@ -22,7 +22,7 @@ describe("List", () => {
     let newTodo = new TodoItems("Code review", false);
     let result = new Map();
     result.set(newTodo.content, newTodo);
-    
+
     expect(list.getActiveTodo()).toEqual(result);
   });
 
@@ -34,11 +34,8 @@ describe("List", () => {
     expect(list.getCompletedTodo()).toEqual(result);
   });
 
-  // it("should have an attribute to count active todo", () => {
-  //   console.log(list.allTodo);
-  //   list.activeTodo;
-  //   console.log(list.activeTodo);
-  //   expect(list.leftItems).toEqual(1);
-  // })
+  it("should have an attribute to count active todo", () => {
+    expect(list.countLeftItems()).toEqual(1);
+  })
 });
 

@@ -21,6 +21,10 @@ class List {
       [...this.allTodo].filter(([key, value]) => value.isCompleted === true)
     );
   }
+
+  countLeftItems() {
+    return this.getActiveTodo().size;
+  }
   
 }
 
