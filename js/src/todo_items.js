@@ -1,16 +1,7 @@
 class TodoItems {
-  constructor(content, isCompleted = false, isDeleted = false) {
+  constructor(content, isCompleted = false) {
     this.content = content;
     this.isCompleted = isCompleted;
-    this.isDeleted = isDeleted;
-  }
-
-  completeATodo() {
-    this.isCompleted = true;
-  }
-
-  deletedATodo() {
-    this.isDeleted = true;
   }
 }
 

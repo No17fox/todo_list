@@ -11,8 +11,7 @@ describe("List", () => {
 
     expect(list.allTodo.get("站会")).toEqual({
       content: "站会", 
-      isCompleted: true, 
-      isDeleted: false
+      isCompleted: true
     });
   });
 

@@ -5,8 +5,8 @@ class List {
     this.allTodo = allTodo;
   }
 
-  addATodo(content, isCompleted = false, isDeleted = false) {
-    let newTodo = new TodoItems(content, isCompleted, isDeleted);
+  addATodo(content, isCompleted = false) {
+    let newTodo = new TodoItems(content, isCompleted);
     this.allTodo.set(content, newTodo);
   }
 
