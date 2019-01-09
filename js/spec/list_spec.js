@@ -34,7 +34,7 @@ describe("List", () => {
     expect(list.getCompletedTodo()).toEqual(result);
   });
 
-  it("should have an attribute to count active todo", () => {
+  it("should have a method to count active todo", () => {
     expect(list.countLeftItems()).toEqual(1);
   });
 
