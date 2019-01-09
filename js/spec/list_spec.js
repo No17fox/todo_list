@@ -36,6 +36,16 @@ describe("List", () => {
 
   it("should have an attribute to count active todo", () => {
     expect(list.countLeftItems()).toEqual(1);
+  });
+
+  it("should have a method to change todo's status", () => {
+    list.completedATodo("Code review");
+
+    let newTodo = new TodoItems("Code review", true);
+    let result = new Map();
+    result.set(newTodo.content, newTodo);
+
+    expect(list.getActiveTodo()).toEqual(result);
   })
 });
 

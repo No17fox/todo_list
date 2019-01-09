@@ -25,6 +25,12 @@ class List {
   countLeftItems() {
     return this.getActiveTodo().size;
   }
+
+  completedATodo(key) {
+    let currentTodo = this.allTodo.get(key);
+    currentTodo.isCompleted = true;
+    this.allTodo.set(key, currentTodo);
+  }
   
 }
 
