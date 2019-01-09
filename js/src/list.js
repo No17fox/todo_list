@@ -4,6 +4,7 @@ class List {
   constructor(allTodo = new Map()) {
     this.allTodo = allTodo;
     this.activeTodo = this.getActiveTodo();
+    this.completedTodo = this.getCompletedTodo();
   }
 
   addATodo(content, isCompleted = false, isDeleted = false) {
@@ -17,6 +18,11 @@ class List {
     );
   }
 
+  getCompletedTodo() {
+    return new Map(
+      [...this.allTodo].filter(([key, value]) => value.isCompleted === true)
+    );
+  }
   
 }
 

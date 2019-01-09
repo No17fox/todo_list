@@ -24,6 +24,14 @@ describe("List", () => {
     result.set(newTodo.content, newTodo);
     
     expect(list.activeTodo).toEqual(result);
-  })
-})
+  });
+
+  it("should have a method to find completed todo", () => {
+    let newTodo = new TodoItems("站会", true);
+    let result = new Map();
+    result.set(newTodo.content, newTodo);
+    
+    expect(list.completedTodo).toEqual(result);
+  });
+});
 
