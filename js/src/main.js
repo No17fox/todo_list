@@ -27,12 +27,23 @@ function addTodo(event) {
 function completeTodo(event) {
   let todoContent = event.target;
   let todoItems = todoContent.parentNode;
+  let listNode = todoItems.parentNode;
+
   todoItems.classList.add("completed");
   todoContent.classList.add("completed");
   if (status === "active") {
     listNode.removeChild(todoItems);
   }
   let currentList = updateLocalStorage("complete", todoContent.innerHTML);
+}
+
+function deleteTodo(event) {
+  let todoItems = event.target.parentNode;
+  let todoContent = todoItems.firstChild;
+  let listNode = todoItems.parentNode;
+
+  listNode.removeChild(todoItems);
+  let currentList = updateLocalStorage("delete", todoContent.innerHTML);
 }
 
 function showList(currentList, listNode, input) {
@@ -55,4 +66,6 @@ function showList(currentList, listNode, input) {
   todoItems.appendChild(deleteBtn);
 
   todoContent.addEventListener("click", completeTodo);
+
+  deleteBtn.addEventListener("click", deleteTodo);
 }
