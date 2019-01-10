@@ -39,19 +39,19 @@
       </div>
       <div class="view_mode">
         <div>
-          <input class="radio"  id="all" type="radio" name="view_mode" value="all" checked="checked" onclick="showAllTodo()"/>
+          <input class="radio"  id="all" type="radio" name="view_mode" value="all" checked="checked" onclick="viewMode(event)"/>
           <label for="all">
             ALL
           </label>
         </div>
         <div>
-          <input class="radio" id="active" type="radio" name="view_mode" value="active" onclick="showActiveTodo()"/>
+          <input class="radio" id="active" type="radio" name="view_mode" value="active" onclick="viewMode(event)"/>
           <label for="active">
             ACTIVE
           </label>
         </div>
         <div>
-          <input class="radio" id="completed" type="radio" name="view_mode" value="completed" onclick="showCompletedTodo()"/>
+          <input class="radio" id="completed" type="radio" name="view_mode" value="completed" onclick="viewMode(event)"/>
           <label for="completed">
             COMPLETED
           </label>

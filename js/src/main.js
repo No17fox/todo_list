@@ -8,7 +8,7 @@ window.onload = function () {
   createLocalStorage();
   let currentList = readLocalStorage();
   for (let item of currentList.allTodo.keys()) {
-    showList(currentList, listNode, item);
+    showList(currentList.allTodo, listNode, item);
   }
   document.getElementById("count").innerHTML = currentList.countLeftItems();
   showOrHideClearBtn(currentList.countCompletedItems());
@@ -21,7 +21,7 @@ function addTodo(event) {
     document.getElementById("input").value = "";
     if (status != "completed") {
       let listNode = document.getElementById("list");
-      showList(currentList, listNode, input);
+      showList(currentList.allTodo, listNode, input);
     }
     document.getElementById("count").innerHTML = currentList.countLeftItems();
   }
@@ -53,14 +53,14 @@ function deleteTodo(event) {
   showOrHideClearBtn(currentList.countCompletedItems());
 }
 
-function showList(currentList, listNode, input) {
+function showList(allTodo, listNode, input) {
   let todoItems = document.createElement("li");
   let todoContent = document.createElement("div");
   let deleteBtn = document.createElement("div");
 
   todoContent.innerHTML = input;
   todoContent.classList.add("todo_content");
-  if (currentList.allTodo.get(input).isCompleted) {
+  if (allTodo.get(input).isCompleted) {
     todoItems.classList.add("completed");
     todoContent.classList.add("completed");
   }
@@ -90,7 +90,40 @@ function clearCompleted() {
   let listNode = document.getElementById("list");
   listNode.innerHTML = "";
   for (let item of currentList.allTodo.keys()) {
-    showList(currentList, listNode, item);
+    showList(currentList.allTodo, listNode, item);
   }
   showOrHideClearBtn(currentList.countCompletedItems());
+}
+
+function viewMode(event) {
+  let currentList = readLocalStorage();
+  let listNode = document.getElementById("list");
+  listNode.innerHTML = "";
+  switch (event.target.value) {
+    case "all":
+      for (let item of currentList.allTodo.keys()) {
+        showList(currentList.allTodo, listNode, item);
+      }
+      status = "all";
+      break;
+
+    case "active":
+      let activeTodo = currentList.getActiveTodo();
+      for (let item of activeTodo.keys()) {
+        showList(activeTodo, listNode, item);
+      }
+      status = "active";
+      break;
+
+    case "completed":
+      let completedTodo = currentList.getCompletedTodo();
+      for (let item of completedTodo.keys()) {
+        showList(completedTodo, listNode, item);
+      }
+      status = "completed";
+      break;
+  
+    default:
+      break;
+  } 
 }
