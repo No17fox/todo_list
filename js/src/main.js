@@ -10,6 +10,7 @@ window.onload = function () {
   for (let item of currentList.allTodo.keys()) {
     showList(currentList, listNode, item);
   }
+  document.getElementById("count").innerHTML = currentList.countLeftItems();
 }
 
 function addTodo(event) {
@@ -21,6 +22,7 @@ function addTodo(event) {
       let listNode = document.getElementById("list");
       showList(currentList, listNode, input);
     }
+    document.getElementById("count").innerHTML = currentList.countLeftItems();
   }
 }
 
@@ -35,6 +37,7 @@ function completeTodo(event) {
     listNode.removeChild(todoItems);
   }
   let currentList = updateLocalStorage("complete", todoContent.innerHTML);
+  document.getElementById("count").innerHTML = currentList.countLeftItems();
 }
 
 function deleteTodo(event) {
@@ -44,6 +47,7 @@ function deleteTodo(event) {
 
   listNode.removeChild(todoItems);
   let currentList = updateLocalStorage("delete", todoContent.innerHTML);
+  document.getElementById("count").innerHTML = currentList.countLeftItems();
 }
 
 function showList(currentList, listNode, input) {
