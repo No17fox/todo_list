@@ -3,8 +3,7 @@
 let status = "all";
 
 window.onload = function () {
-  let listNode = document.getElementById("list");
-  listNode.innerHTML = "";
+  let listNode = clearList();
   createLocalStorage();
   let currentList = readLocalStorage();
   for (let item of currentList.allTodo.keys()) {
@@ -87,8 +86,7 @@ function showOrHideClearBtn(completedItems) {
 
 function clearCompleted() {
   let currentList = updateLocalStorage("clear");
-  let listNode = document.getElementById("list");
-  listNode.innerHTML = "";
+  let listNode = clearList();
   for (let item of currentList.allTodo.keys()) {
     showList(currentList.allTodo, listNode, item);
   }
@@ -97,8 +95,7 @@ function clearCompleted() {
 
 function viewMode(event) {
   let currentList = readLocalStorage();
-  let listNode = document.getElementById("list");
-  listNode.innerHTML = "";
+  let listNode = clearList();
   switch (event.target.value) {
     case "all":
       for (let item of currentList.allTodo.keys()) {
@@ -126,4 +123,10 @@ function viewMode(event) {
     default:
       break;
   } 
+}
+
+function clearList() {
+  let listNode = document.getElementById("list");
+  listNode.innerHTML = "";
+  return listNode;
 }
