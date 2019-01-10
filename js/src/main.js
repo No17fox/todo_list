@@ -102,6 +102,7 @@ function viewMode(event) {
         showList(currentList.allTodo, listNode, item);
       }
       status = "all";
+      showOrHideClearBtn(currentList.countCompletedItems());
       break;
 
     case "active":
@@ -110,6 +111,7 @@ function viewMode(event) {
         showList(activeTodo, listNode, item);
       }
       status = "active";
+      showOrHideClearBtn(currentList.countCompletedItems());
       break;
 
     case "completed":
@@ -118,6 +120,7 @@ function viewMode(event) {
         showList(completedTodo, listNode, item);
       }
       status = "completed";
+      showOrHideClearBtn(currentList.countCompletedItems());
       break;
   
     default:
