@@ -84,3 +84,13 @@ function showOrHideClearBtn(completedItems) {
     document.getElementById("clear_btn").classList.remove("appear");
   }
 }
+
+function clearCompleted() {
+  let currentList = updateLocalStorage("clear");
+  let listNode = document.getElementById("list");
+  listNode.innerHTML = "";
+  for (let item of currentList.allTodo.keys()) {
+    showList(currentList, listNode, item);
+  }
+  showOrHideClearBtn(currentList.countCompletedItems());
+}

@@ -39,6 +39,11 @@ function updateLocalStorage(operation, key = "") {
       localStorage.setItem("todoList", mapToJson(list.allTodo));
       return list;
 
+    case "clear":
+      list.clearCompletedTodo();
+      localStorage.setItem("todoList", mapToJson(list.allTodo));
+      return list;
+
     default:
       break;
   }

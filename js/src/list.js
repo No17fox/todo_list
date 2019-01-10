@@ -39,6 +39,10 @@ class List {
   deleteATodo(key) {
     this.allTodo.delete(key);
   }
+
+  clearCompletedTodo() {
+    this.allTodo = this.getActiveTodo();
+  }
   
 }
 
