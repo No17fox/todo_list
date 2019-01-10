@@ -11,6 +11,7 @@ window.onload = function () {
     showList(currentList, listNode, item);
   }
   document.getElementById("count").innerHTML = currentList.countLeftItems();
+  showOrHideClearBtn(currentList.countCompletedItems());
 }
 
 function addTodo(event) {
@@ -38,6 +39,7 @@ function completeTodo(event) {
   }
   let currentList = updateLocalStorage("complete", todoContent.innerHTML);
   document.getElementById("count").innerHTML = currentList.countLeftItems();
+  showOrHideClearBtn(currentList.countCompletedItems());
 }
 
 function deleteTodo(event) {
@@ -48,6 +50,7 @@ function deleteTodo(event) {
   listNode.removeChild(todoItems);
   let currentList = updateLocalStorage("delete", todoContent.innerHTML);
   document.getElementById("count").innerHTML = currentList.countLeftItems();
+  showOrHideClearBtn(currentList.countCompletedItems());
 }
 
 function showList(currentList, listNode, input) {
@@ -72,4 +75,12 @@ function showList(currentList, listNode, input) {
   todoContent.addEventListener("click", completeTodo);
 
   deleteBtn.addEventListener("click", deleteTodo);
+}
+
+function showOrHideClearBtn(completedItems) {
+  if (completedItems > 1 && status != "active") {
+    document.getElementById("clear_btn").classList.add("appear");
+  } else {
+    document.getElementById("clear_btn").classList.remove("appear");
+  }
 }
