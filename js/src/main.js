@@ -15,14 +15,24 @@ window.onload = function () {
 function addTodo(event) {
   let input = document.getElementById("input").value;
   if (event.keyCode === 13 && input) {
-    let currentList = readLocalStorage();
-    currentList = updateLocalStorage("add", currentList, input);
+    let currentList = updateLocalStorage("add", input);
     document.getElementById("input").value = "";
     if (status != "completed") {
       let listNode = document.getElementById("list");
       showList(currentList, listNode, input);
     }
   }
+}
+
+function completeTodo(event) {
+  let todoContent = event.target;
+  let todoItems = todoContent.parentNode;
+  todoItems.classList.add("completed");
+  todoContent.classList.add("completed");
+  if (status === "active") {
+    listNode.removeChild(todoItems);
+  }
+  let currentList = updateLocalStorage("complete", todoContent.innerHTML);
 }
 
 function showList(currentList, listNode, input) {
@@ -44,5 +54,5 @@ function showList(currentList, listNode, input) {
   todoItems.appendChild(todoContent);
   todoItems.appendChild(deleteBtn);
 
-  
+  todoContent.addEventListener("click", completeTodo);
 }

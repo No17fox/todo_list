@@ -21,7 +21,8 @@ function readLocalStorage() {
   return new List(alltodo);
 }
 
-function updateLocalStorage(operation, list, key = "") {
+function updateLocalStorage(operation, key = "") {
+  let list = readLocalStorage();
   switch (operation) {
     case "add":
       list.addATodo(key);
