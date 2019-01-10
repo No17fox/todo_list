@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/No17fox/todo_list#readme",
   "dependencies": {
+    "growl": "^1.10.5",
     "jasmine": "^3.3.1",
     "jasmine-node": "^1.16.2"
   }
